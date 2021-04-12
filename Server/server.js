@@ -51,8 +51,19 @@ app.post('/newUser',async(req,res)=>{
     console.error(err.message)
   }
 })
+// update the users favorite champion
+app.post('/updateFavorite/:input',async(req,res)=>{
+  try {
+    const name = req.body.name
+    const favoritedCharacter = req.params.input
+    await pool.query(`UPDATE users SET user_favorites = '${favoritedCharacter}' WHERE name = '${name}'`)
+    res.send('Favorite set, When logged in you will be sent to this page')
+  } catch (err) {
+      console.error(err.message)
+  }
+})
 
 // causes our server to listen for incoming reuqests to this port
 app.listen(PORT, ()=>{
     console.log(`LISTINING ON PORT ${PORT}`)
-});
+}); 

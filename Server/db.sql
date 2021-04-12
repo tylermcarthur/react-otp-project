@@ -8,7 +8,6 @@ CREATE TABLE IF NOT EXISTS users (
     name VARCHAR(100) UNIQUE NOT NULL,
     password VARCHAR(25) NOT NULL,
     email VARCHAR(255) NOT NULL,
-    user_account_favorites TEXT,
-    user_game_favorites TEXT
+    user_favorites TEXT
 );
 
